@@ -63,9 +63,10 @@ def enthalpy(filename1, homoStep, filename2, startStep, endStep):
 # arg2: the frame right after premixing; should be a disordered homogeneous state (usually frame #1)
 # arg3: the filename for *the separate run*
 # arg4-5: the range of frames where the morphology is already at equilibrium
+# arg6: use N_K*b^2 to fit R_home^2 rather than directly reading R_homo^2 from the homo mixture (see equation S5)
 # **kwargs: example: N_ps=7, N_pdms=4, N_backbone_branched=20, N_backbone_pla=20, see E2E.py
 # do not confuse timestep and frame No.
-def entropy(dumpFile1, homoFrame, dumpFile2, startFrame, endFrame, **dumpConfig):
+def entropy(dumpFile1, homoFrame, dumpFile2, startFrame, endFrame, useFittedR=True, **dumpConfig):
     from E2E import BB_TYPE, PS_TYPE, PDMS_TYPE, E2E
     from readDUMP import read
 
@@ -76,23 +77,26 @@ def entropy(dumpFile1, homoFrame, dumpFile2, startFrame, endFrame, **dumpConfig)
     b = result0['kuhn_len']
     Rhomo2 = result0['br_e2e_msd']
     ret = {'b': b, 'R_homo^2': Rhomo2}
+    if useFittedR:  Rhomo2 = ret['R_homo^2_fitted'] = N_br*b # R_max*b, see equation S5
 
-    mean_entropy_term = 0
+    mean_entropic_term = 0
     data = read(dumpFile2, range(startFrame, endFrame+1), dumpTypes, False, False)
     for i in range(startFrame, endFrame+1):
         Rf2 = E2E(data[i], silent=True, **dumpConfig).main()['br_e2e_msd']
-        entropy_term = 3*(Rf2-Rhomo2)/2/N_br/(N_br+1)/b**2 # see equation S5
-        mean_entropy_term += entropy_term
-        ret[data[i]['timestep']] = {'R_f^2': Rf2, '-TdS': entropy_term}
-    mean_entropy_term /= (endFrame-startFrame+1)
-    ret['mean_entropy_term'] = mean_entropy_term
+        entropic_term = 1.5*(Rf2/Rhomo2-1)/(N_br+1) # see equation S5
+        mean_entropic_term += entropic_term
+        ret[data[i]['timestep']] = {'R_f^2': Rf2, '-TdS': entropic_term}
+    mean_entropic_term /= (endFrame-startFrame+1)
+    ret['mean_entropic_term'] = mean_entropic_term
     return ret
 
 if __name__ == '__main__':
 # example
     fn = ('42T-C10_20-A4B7_20_common', '42T-C10_20-A4B7_20_aAB=40')
     H = enthalpy(fn[0]+'.out', 800000, fn[1]+'.out', 8000000, 12000000)
-    S = entropy(fn[0]+'.dump', 1, fn[1]+'.out', 8, 12, **{'N_ps':7, 'N_pdms':4, 'N_backbone_branched':20, 'N_backbone_pla':20})
-    print(enthalpy)
-    print(entropy)
-    print('free energy =', H['mean_tot_eng'] + S['mean_entropy_term'])
+    mTS = entropy(fn[0]+'.dump', 1, fn[1]+'.dump', 8, 12, **{'N_ps':7, 'N_pdms':4, 'N_backbone_branched':20, 'N_backbone_pla':20})
+    print(H)
+    print()
+    print(mTS)
+    print()
+    print('free energy =', H['mean_tot_eng'] + mTS['mean_entropic_term'])
