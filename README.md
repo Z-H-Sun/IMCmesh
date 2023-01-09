@@ -5,12 +5,12 @@ Code repo for the ***IMC self-assembled multilayer nanomesh*** paper and the ***
 
 Please consider citing the following paper if you find our code and/or data useful.
 
-* Sun, Z.†; Liu, R.†; Su, T.; Huang, H.; Kawamoto, K.; Liang, R.; Liu, B.; Zhong, M.; Alexander-Katz, A.; Ross, C. A.\*; Johnson, J. A.\* *Nat. Nanotechnol.* **2023**.
+* <sup id=citation-1>1</sup> Sun, Z.†; Liu, R.†; Su, T.; Huang, H.; Kawamoto, K.; Liang, R.; Liu, B.; Zhong, M.; Alexander-Katz, A.; Ross, C. A.\*; Johnson, J. A.\* *Nat. Nanotechnol.* **2023**.
 [![DOI: 10.1038/s41565-022-01293-z](https://img.shields.io/badge/DOI-10.1038%2fs41565--022--01293--z-informational?style=plastic)](https://doi.org/10.1038/s41565-022-01293-z)
 
 If you use our codes on reciprocal space (FFT / ZAP) analysis and/or free energy calculations, we would appreciate it if you could also cite this related work: 
 
-* Liu, R.†; Sun, Z.†; Huang, H.; Johnson, J. A.\*; Alexander-Katz, A.; Ross, C. A.\* *Nano Lett.* **2023**.
+* <sup id=citation-2>2</sup> Liu, R.†; Sun, Z.†; Huang, H.; Johnson, J. A.\*; Alexander-Katz, A.; Ross, C. A.\* *Nano Lett.* **2023**.
 [![DOI: 10.1038/s41565-022-01293-z](https://img.shields.io/badge/DOI-10.1021%2facs.nanolett.2c03927-informational?style=plastic)](https://doi.org/10.1021/acs.nanolett.2c03927)
 
   † Equal contribution
@@ -77,7 +77,7 @@ See each file for more details.
 > Show 3D FFT results for simulated morphologies
 
 [`showZAP.py`](/showZAP.py)
-> Show [*uvw*] zone axis pattern, *i.e.* projection of the reciprocal space pattern calculated by 3D FFT. Click canvas or press any key to show/hide points/indices.
+> Show [*uvw*] zone axis pattern, *i.e.* projection of the reciprocal space pattern calculated by 3D FFT. Click canvas or press any key to show/hide points/indices. This generates [**Figures S6–8**](https://pubs.acs.org/doi/suppl/10.1021/acs.nanolett.2c03927/suppl_file/nl2c03927_si_001.pdf) in Ref [<sup>2</sup>](#citation-2).
 
 [`E2E.py`](/E2E.py)
 > This script, on its own, presents statistical results for end to end distance of JBBCP backbones and branches (neglecting the homo-C domain), read from a DUMP file from DPD simulations. This is also a module file that will be imported by other python scripts.
@@ -87,12 +87,12 @@ See each file for more details.
 > When importing this module in other python scripts, you may want to turn on `E2E.silent`, which effectively turns off `E2E.show_plot` and `E2E.verbose`.
 
 [`E2E_bb_diff_region.py`](/E2E_bb_diff_region.py)
-> Present statistical results for end to end distance of JBBCP backbones in the homo-C domains in different lamellar superstructures, read from a DUMP file from DPD simulations. This generates **Figure S51**.
+> Present statistical results for end to end distance of JBBCP backbones in the homo-C domains in different lamellar superstructures, read from a DUMP file from DPD simulations. This generates [**Figure S51**](https://static-content.springer.com/esm/art%3A10.1038%2Fs41565-022-01293-z/MediaObjects/41565_2022_1293_MOESM1_ESM.pdf) in Ref [<sup>1</sup>](#citation-1).
 > 
 > This script is similar to [`E2E.py`](/E2E.py), but only backbones not branches are analyized, so the <kbd>&gt;</kbd> button has the same function as the <kbd>&gt;&gt;</kbd> button. You can make use of <kbd>&gt;|</kbd> button to speed up the process. After that, click the <kbd>&gt;</kbd> button again to finalize the analysis. Refer to [`E2E.py`](/E2E.py) for more info.
 
 [`FreeEnergy.py`](/FreeEnergy.py)
-> Average enthalpy from .out file and entropy from .dump file to generate **Figure S56**
+> Average enthalpy from .out file and entropy from .dump file to generate [**Figure S56**](https://static-content.springer.com/esm/art%3A10.1038%2Fs41565-022-01293-z/MediaObjects/41565_2022_1293_MOESM1_ESM.pdf) in Ref [<sup>1</sup>](#citation-1) and [**Figure S3**](https://pubs.acs.org/doi/suppl/10.1021/acs.nanolett.2c03927/suppl_file/nl2c03927_si_001.pdf) in Ref [<sup>2</sup>](#citation-2).
 
 A screenshot for the output for some of the scripts above is shown below:
 
@@ -126,12 +126,12 @@ See each file for more details.
 [`GenF.rb`](/GenF.rb)
 > Output a string for `Mathematica` to calculate the Fourier series of a certain *hkl* index.
 
-The calculated simplified results have been shown in **Equations S9–S11** (for O<sup>70</sup>, M<sup>15</sup>, and T<sup>131</sup>, respectively), copied below:
+The calculated simplified results have been shown in [**Equations S9–S11**](https://static-content.springer.com/esm/art%3A10.1038%2Fs41565-022-01293-z/MediaObjects/41565_2022_1293_MOESM1_ESM.pdf) in Ref [<sup>1</sup>](#citation-1) (for O<sup>70</sup>, M<sup>15</sup>, and T<sup>131</sup>, respectively), copied below:
 
 For O<sup>70</sup>:
 ```math
 \begin{aligned}
-\Re(F_{111})&=16 [\cos (2 \pi  x) \cos (2 \pi  y) \cos (2 \pi  z)) + \sin (2 \pi  x) \sin (2 \pi  y) \sin (2 \pi  z)]\\
+\Re(F_{111})&=16 [\cos (2 \pi  x) \cos (2 \pi  y) \cos (2 \pi  z) + \sin (2 \pi  x) \sin (2 \pi  y) \sin (2 \pi  z)]\\
 F_{022}&=16 [\cos (4 \pi  (y-z))+\cos (4 \pi  (y+z))]\\
 F_{202}&=16 [\cos (4 \pi  (z-x))+\cos (4 \pi  (z+x))]\\
 F_{004}&=32 \cos (8 \pi  z)\\
@@ -167,13 +167,17 @@ F_{101}&=8[\cos(2\pi x)-\cos(2\pi y)]\cos(2\pi z)
 [`M15FT.py`](/M15FT.py)
 > Simulate the SAXS curves by Fourier transform (FT) for 1) 3D continuous M<sup>15</sup> and 2) sliced M<sup>15</sup>-in-LAM structures.
 > 
-> First, the real space models for the 2 cases are generated. This is based on the model [`M15FT/M15_unitcell.npy`](/M15FT/M15_unitcell.npy), which is generated by Mathematica (see [`GenLevelSurf.nb`](/GenLevelSurf.nb)) and then voxelized and binaried into a 10×20×17 array.
+> First, the real space models for the 2 cases are generated. This is based on the model [`M15FT/M15_unitcell.npy`](/M15FT/M15_unitcell.npy), which is generated by Mathematica (see [`GenLevelSurf.nb`](/GenLevelSurf.nb)) and then voxelized and binaried into a 10×20×17 array. The voxelization is done in part through the help of an ImageJ plugin, [SciView](https://imagej.net/plugins/sciview).
+> 
 > For each of the 2 cases, the generation methods are elaborated below, and the final outcomes are shown in [`M15FT/M15-c.png`](/M15FT/M15-c.png) and [`M15FT/M15-s.png`](/M15FT/M15-s.png), repectively.
+> 
 > Then, the FFT is done, and the results are saved to [`M15FT/M15-c_FT.npy`](/M15FT/M15-c_FT.npy) and [`M15FT/M15-s_FT.npy`](M15FT/M15-s_FT.npy), respectively. The results can be visualized by [`M15FTplot.py`](/M15FTplot.py)
 
 [`M15FTplot.py`](/M15FTplot.py)
 > Show the simulated SAXS curves for 1) 3D continuous M<sup>15</sup> and 2) sliced M<sup>15</sup>-in-LAM structures.
+> 
 > See also: `M15FT.py`
+> 
 > The "powder XRD pattern" for the first case is predicted by `Mercury (CCDC)` from an "artifical" crystal file of M<sup>15</sup> space group, [`M15FT/M15-ballstick.cif`](M15FT/M15-ballstick.cif). 
 
 The direct space images for Cases 1) and 2) generated in [`M15FT.py`](/M15FT.py) are shown below:
@@ -182,7 +186,7 @@ The direct space images for Cases 1) and 2) generated in [`M15FT.py`](/M15FT.py)
 <img width="40%" height="40%" src="/M15FT/M15-c.png"><img width="40%" height="40%" src="/M15FT/M15-s.png">
 </p>
 
-A rough 3D model for M<sup>15</sup> generated by [`GenLevelSurf.nb`](/GenLevelSurf.nb) (with `PlotPoints -> 10`) is shown below. A finer, more accurate model can be downloaded from **Supplementary Data 1**.
+A rough 3D model for M<sup>15</sup> generated by [`GenLevelSurf.nb`](/GenLevelSurf.nb) (with `PlotPoints -> 10`) is shown below. A finer, more accurate model can be downloaded from [**Supplementary Data 1**](https://static-content.springer.com/esm/art%3A10.1038%2Fs41565-022-01293-z/MediaObjects/41565_2022_1293_MOESM4_ESM.zip) in Ref [<sup>1</sup>](#citation-1).
 
 ```stl
 solid M15
