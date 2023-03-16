@@ -5,13 +5,13 @@ Code repo for the ***IMC self-assembled multilayer nanomesh*** paper and the ***
 
 Please consider citing the following paper if you find our code and/or data useful.
 
-* <sup id=citation-1>1</sup> Sun, Z.†; Liu, R.†; Su, T.; Huang, H.; Kawamoto, K.; Liang, R.; Liu, B.; Zhong, M.; Alexander-Katz, A.; Ross, C. A.\*; Johnson, J. A.\* *Nat. Nanotechnol.* **2023**.
+* <sup id=citation-1>1</sup> Sun, Z.†; Liu, R.†; Su, T.; Huang, H.; Kawamoto, K.; Liang, R.; Liu, B.; Zhong, M.; Alexander-Katz, A.; Ross, C. A.\*; Johnson, J. A.\* *Nat. Nanotechnol.* **2023**, *18*, 273–280.
 [![DOI: 10.1038/s41565-022-01293-z](https://img.shields.io/badge/DOI-10.1038%2fs41565--022--01293--z-informational?style=plastic)](https://doi.org/10.1038/s41565-022-01293-z)
 
 If you use our codes on reciprocal space (FFT / ZAP) analysis and/or free energy calculations, we would appreciate it if you could also cite this related work: 
 
-* <sup id=citation-2>2</sup> Liu, R.†; Sun, Z.†; Huang, H.; Johnson, J. A.\*; Alexander-Katz, A.; Ross, C. A.\* *Nano Lett.* **2023**.
-[![DOI: 10.1038/s41565-022-01293-z](https://img.shields.io/badge/DOI-10.1021%2facs.nanolett.2c03927-informational?style=plastic)](https://doi.org/10.1021/acs.nanolett.2c03927)
+* <sup id=citation-2>2</sup> Liu, R.†; Sun, Z.†; Huang, H.; Johnson, J. A.\*; Alexander-Katz, A.\*; Ross, C. A.\* *Nano Lett.* **2023**, *23*, 177–182.
+[![DOI: 10.1021/acs.nanolett.2c03927](https://img.shields.io/badge/DOI-10.1021%2facs.nanolett.2c03927-informational?style=plastic)](https://doi.org/10.1021/acs.nanolett.2c03927)
 
   † Equal contribution
 
